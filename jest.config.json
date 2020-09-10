@@ -1,0 +1,7 @@
+{
+  "testPathIgnorePatterns": ["<rootDir>/node_modules/"],
+  "testMatch": ["**/?(*.)+(spec|test).[jt]s?(x)"],
+  "transform": {
+    "^.+\\.ts$": "babel-jest"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": ["./*"]
+    },
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./dist"
+  },
+  "include": [
+    "**/*.ts"
+  ]
+}
