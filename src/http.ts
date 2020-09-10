@@ -1,1 +1,1 @@
-export const makeRequest = () => 1;
+export const makeRequest = (): number => 1;
