@@ -1,0 +1,21 @@
+name: Test, Build and Deploy
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: '*'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+  
+      - name: Check TS
+        run: yarn tsc
+      
+      - name: Lint
+        run: yarn lint
+      
+      - name: Test Coverage
+        run: yarn jest --coverage
