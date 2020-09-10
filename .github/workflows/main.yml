@@ -10,12 +10,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-  
+
+      - name: Install
+        run: yarn install
+
       - name: Check TS
         run: yarn tsc
-      
+
       - name: Lint
         run: yarn lint
-      
+
       - name: Test Coverage
         run: yarn jest --coverage
+
+  docs:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install
+        run: yarn install
+
+      - name: Build docs
+        run: yarn docs
+
+      - name: Deploy Docs
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          publish_dir: ./docs
