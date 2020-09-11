@@ -1,7 +1,7 @@
-type HttpProtocol = 'http' | 'https';
-
 type PRestGlobalOptions = {
-  requestProtocol: HttpProtocol;
+  baseUrl: string;
+  db?: string;
+  schema?: string;
 };
 
 type AccessStoreFunction<T> = () => T;

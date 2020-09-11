@@ -33,6 +33,8 @@ export const setInStore = <T>(store: T): SetInStoreFunction<T> => (key, value) =
  *  const opts = getOptions('requestProtocol');
  *  // opts.requestProtocol
  * ```
+ *
+ * @function
  */
 export const getOptions = accessStore<PRestGlobalOptions>(globalOptions);
 
