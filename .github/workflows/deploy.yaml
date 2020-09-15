@@ -4,9 +4,15 @@ on:
     types: [published]
 
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: 'starting'
+        run: echo "start deploy..."
   npm:
     runs-on: ubuntu-latest
-    needs: 'Test.quality'
+    needs: ['prepare', 'Test.quality']
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
