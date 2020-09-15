@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "babel src -d dist --extensions .ts",
-    "tsc": "tsc --noEmit",
+    "tsc": "tsc --project tsconfig.prod.json --noEmit",
     "lint": "eslint './src/**/*.ts' './tests/**/*.ts'",
     "docs": "yarn typedoc --out docs src"
   },

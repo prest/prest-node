@@ -1,5 +1,5 @@
 const globalOptions: PRestGlobalOptions = {
-  requestProtocol: 'http',
+  baseUrl: 'http://localhost:3000',
 };
 
 /**
