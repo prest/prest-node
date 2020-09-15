@@ -1,5 +1,5 @@
 {
-  "name": "prest-node",
+  "name": "@postgresrest/node",
   "version": "1.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
@@ -10,7 +10,8 @@
     "build": "babel src -d dist --extensions .ts",
     "tsc": "tsc --project tsconfig.prod.json --noEmit",
     "lint": "eslint './src/**/*.ts' './tests/**/*.ts'",
-    "docs": "yarn typedoc --out docs src"
+    "docs": "yarn typedoc --out docs src",
+    "prepublish": "yarn build"
   },
   "devDependencies": {
     "@babel/cli": "^7.11.6",
