@@ -1,12 +1,12 @@
 name: Test, Build and Deploy
 on:
   push:
-    branches: [ master ]
+    branches: '*'
   pull_request:
     branches: '*'
 
 jobs:
-  test:
+  quality:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -25,23 +25,6 @@ jobs:
 
       - name: Deploy Coverage
         uses: coverallsapp/github-action@master
+        if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && github.ref == 'refs/heads/master'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-
-  docs:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Install
-        run: yarn install
-
-      - name: Build docs
-        run: yarn docs
-
-      - name: Deploy Docs
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
