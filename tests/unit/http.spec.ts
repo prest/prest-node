@@ -41,6 +41,20 @@ describe('src/http/makeRequest', () => {
       expect(response).toBe(fakeResponse);
     });
 
+    it(`should makeRequest return a ${method} with optin url method without opt setted`, async () => {
+      const opts = { baseUrl: fakeUrl };
+      const path = '/{{x}}';
+      const req = makeRequest(method, path);
+
+      (getOptions as jest.Mock).mockReturnValue(opts);
+      (axios[method] as jest.Mock).mockResolvedValue({ data: fakeResponse });
+      const response = await req();
+
+      expect(axios[method]).toHaveBeenCalledTimes(1);
+      expect(axios[method]).toHaveBeenCalledWith(fakeUrl + '/', {});
+      expect(response).toBe(fakeResponse);
+    });
+
     it(`should makeRequest return a ${method} with data`, async () => {
       const opts = { baseUrl: fakeUrl, db: 'fizz' };
       const data = { fake: 1 };
@@ -82,6 +96,20 @@ describe('src/http/makeRequest', () => {
 
       expect(axios[method]).toHaveBeenCalledTimes(1);
       expect(axios[method]).toHaveBeenCalledWith(fakeUrl + `/${opts.x}`);
+      expect(response).toBe(fakeResponse);
+    });
+
+    it(`should makeRequest return a ${method} with optin url method without opt setted`, async () => {
+      const opts = { baseUrl: fakeUrl };
+      const path = '/{{x}}';
+      const req = makeRequest(method, path);
+
+      (getOptions as jest.Mock).mockReturnValue(opts);
+      (axios[method] as jest.Mock).mockResolvedValue({ data: fakeResponse });
+      const response = await req();
+
+      expect(axios[method]).toHaveBeenCalledTimes(1);
+      expect(axios[method]).toHaveBeenCalledWith(fakeUrl + '/');
       expect(response).toBe(fakeResponse);
     });
 
