@@ -1,2 +1,4 @@
-export { getOptions, getOption, setOption } from './store';
-export * from './api';
+import Api from './entity/Api';
+
+export const PRestAPI = Api;
+export default Api;
