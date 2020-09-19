@@ -1,22 +1,22 @@
 import Request from './Request';
 import TableConnector from './TableConnector';
 
-type Database = {
+export type PRestDatabase = {
   datname: string;
 };
 
-type Schema = {
+export type PRestSchema = {
   schema_name: string;
 };
 
-type Table = {
+export type PRestTable = {
   schema: string;
   name: string;
   type: string;
   owner: string;
 };
 
-type TableDescriptionItem = {
+export type PRestTableShowItem = {
   table_schema: string;
   table_name: string;
   position: number;
@@ -34,24 +34,24 @@ export class Api extends Request {
     return '/' + (entries.length === 1 ? entries[0].replace(/\./g, '/') : entries.join('/'));
   }
 
-  databases(): Promise<Database[]> {
-    return this.call<Database[]>('get', '/databases');
+  databases(): Promise<PRestDatabase[]> {
+    return this.call<PRestDatabase[]>('get', '/databases');
   }
 
-  schemas(): Promise<Schema[]> {
-    return this.call<Schema[]>('get', '/schemas');
+  schemas(): Promise<PRestSchema[]> {
+    return this.call<PRestSchema[]>('get', '/schemas');
   }
 
-  tables(): Promise<Table[]> {
-    return this.call<Table[]>('get', '/tables');
+  tables(): Promise<PRestTable[]> {
+    return this.call<PRestTable[]>('get', '/tables');
   }
 
-  tablesByDBInSchema(...entries: string[]): Promise<Table[]> {
-    return this.call<Table[]>('get', `${this.prepareConnectionPath(entries)}`);
+  tablesByDBInSchema(...entries: string[]): Promise<PRestTable[]> {
+    return this.call<PRestTable[]>('get', `${this.prepareConnectionPath(entries)}`);
   }
 
-  show(...entries: string[]): Promise<TableDescriptionItem[]> {
-    return this.call<TableDescriptionItem[]>('get', `/show${this.prepareConnectionPath(entries)}`);
+  show(...entries: string[]): Promise<PRestTableShowItem[]> {
+    return this.call<PRestTableShowItem[]>('get', `/show${this.prepareConnectionPath(entries)}`);
   }
 
   tableConnection<T>(...entries: string[]): TableConnector<T> {
