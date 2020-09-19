@@ -1,6 +1,15 @@
 src
-tsconfig.json
+tsconfig.*
 tests
 .editorconfig
 README.md
 node_modules
+docker*
+data
+.github
+coverage
+docs
+.babelrc
+.nvmuse
+.prettierrc
+jest.config.json
