@@ -1,5 +1,4 @@
-
-import fetchMock from "jest-fetch-mock"
+import fetchMock from 'jest-fetch-mock';
 import Request from '~/entity/Request';
 
 describe('entity/Request', () => {
