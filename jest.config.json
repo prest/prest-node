@@ -19,5 +19,8 @@
   },
   "transform": {
     "^.+\\.ts$": "babel-jest"
-  }
+  },
+  "setupFiles": [
+    "./tests/unit/setupJest.ts"
+  ]
 }

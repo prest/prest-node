@@ -39,6 +39,14 @@ import PRestApi from '@postgresrest/node';
 const cli = new PRestApi('myhost');
 ```
 
+or if you want you can use custom fetcher with any fetch tool you'd like:
+
+```typescript
+import axios from 'axios';
+
+const fetcher = (uri, method) => axios[method](uri).then(({data}) => data);
+const cli = new PRestApi('myhost', fetcher);
+```
 
 -------------------
 
