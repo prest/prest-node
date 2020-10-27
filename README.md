@@ -107,7 +107,29 @@ Usage sample:
 const data = await cli.tableConnection('db', 'schema', 'table').query();
 ```
 
+### create
+It will reflect `/DATABASE/SCHEMA/TABLE` prest endpoint with `POST` method
 
+Usage sample:
+```typescript
+const data = await cli.tableConnection('db', 'schema', 'table').create({ foo: 'bar' });
+```
+
+### update
+It will reflect `/DATABASE/SCHEMA/TABLE` prest endpoint with `PATCH` method
+
+Usage sample:
+```typescript
+const data = await cli.tableConnection('db', 'schema', 'table').update('myid', { foo: 'fizz' });
+```
+
+### delete
+It will reflect `/DATABASE/SCHEMA/TABLE` prest endpoint with `DELETE` method
+
+Usage sample:
+```typescript
+const data = await cli.tableConnection('db', 'schema', 'table').delete('myid');
+```
 
 -------------------
 
