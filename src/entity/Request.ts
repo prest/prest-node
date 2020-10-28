@@ -1,6 +1,16 @@
-type fetcherFn = <T>(uri: string, method: string) => Promise<T>;
+import fetch from 'node-fetch';
 
-const defaultFetcher: fetcherFn = (uri, method) => fetch(uri, { method }).then((res) => res.json());
+type fetcherFn = <T>(uri: string, method: string, data?: T | Partial<T>) => Promise<T>;
+
+const defaultFetcher: fetcherFn = (uri, method, data) => {
+  const opts = {
+    method,
+    headers: { 'Content-Type': 'application/json' },
+    ...(!data ? {} : { body: JSON.stringify(data) }),
+  };
+
+  return fetch(uri, opts).then((res) => res.json());
+};
 
 export class Request {
   protected baseUrl: string;
@@ -12,8 +22,8 @@ export class Request {
     this.fetcher = fetcher || defaultFetcher;
   }
 
-  public call<T>(method: string, path: string): Promise<T> {
-    return this.fetcher<T>(this.baseUrl + path, method);
+  public call<T>(method: string, path: string, data?: T | Partial<T>): Promise<T> {
+    return this.fetcher<T>(this.baseUrl + path, method, data);
   }
 }
 
