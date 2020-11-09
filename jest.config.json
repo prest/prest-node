@@ -2,6 +2,7 @@
   "testPathIgnorePatterns": ["<rootDir>/node_modules/"],
   "testMatch": ["**/?(*.)+(spec|test).[jt]s?(x)"],
   "collectCoverageFrom": ["./src/**/*.ts"],
+  "coverageReporters": ["text", "html", "lcov"],
   "coveragePathIgnorePatterns": ["<rootDir>/src/types", "<rootDir>/src/index.ts"],
   "coverageThreshold": {
     "global": {
