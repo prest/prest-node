@@ -16,7 +16,7 @@ describe('entity/Request', () => {
   });
 
   it('should execute call and get the response without data', async () => {
-    const req = new Request(baseUrl);
+    const req = new Request({ baseUrl });
     const resp = await req.call(method, '');
 
     expect(resp).toBe(data);
@@ -26,7 +26,7 @@ describe('entity/Request', () => {
 
   it('should execute call and get the response with data', async () => {
     const fakeBody = { foo: 'bar' };
-    const req = new Request(baseUrl);
+    const req = new Request({ baseUrl });
     const resp = await req.call(method, '', fakeBody);
 
     const body = JSON.stringify(fakeBody);

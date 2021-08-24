@@ -5,7 +5,7 @@ import TableConnector from '~/entity/TableConnector';
 
 describe('entity/Api', () => {
   const baseUrl = 'foo.bar';
-  const api = new Api(baseUrl);
+  const api = new Api({ baseUrl });
   const fakeResponse = 'foo';
   const database = 'prest';
   const schema = 'public';
@@ -53,8 +53,9 @@ describe('entity/Api', () => {
   describe('.tableConnection', () => {
     it('should call correctly for string param', () => {
       (TableConnector as jest.Mock).mockImplementation(() => ({ fakeResponse }));
+      const conn = api.tableConnection(`${database}.${schema}.${table}`);
 
-      expect(api.tableConnection(`${database}.${schema}.${table}`)).toEqual({ fakeResponse });
+      expect(conn).toEqual({ fakeResponse });
       expect(TableConnector).toHaveBeenCalledWith(baseUrl, expectedUrl);
     });
 

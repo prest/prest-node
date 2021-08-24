@@ -9,7 +9,7 @@ export class TableConnector<T> extends Request {
   private dbPath: string;
 
   constructor(baseUrl: string, dbPath: string, idColumn: MultipleId = DEFAULT_COLUMN_ID) {
-    super(baseUrl);
+    super({ baseUrl });
     this.dbPath = dbPath;
     this.idColumn = idColumn;
   }
@@ -30,7 +30,7 @@ export class TableConnector<T> extends Request {
 
   update(entry: MultipleId | Query, data: Partial<T>): Promise<T> {
     const qs = this.formatQuery(entry);
-    return this.call('patch', this.dbPath + qs, data);
+    return this.call('put', this.dbPath + qs, data);
   }
 
   delete(entry: MultipleId | Query): Promise<T> {

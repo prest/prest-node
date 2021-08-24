@@ -61,7 +61,7 @@ describe('entity/TableConnector', () => {
 
       expect(resp).toBe(fakeResponse);
       expect(conn.call).toHaveBeenCalledTimes(1);
-      expect(conn.call).toHaveBeenCalledWith('patch', `${dbPath}?id=$eq.${fakeId}`, fakeData);
+      expect(conn.call).toHaveBeenCalledWith('put', `${dbPath}?id=$eq.${fakeId}`, fakeData);
     });
 
     it('should execute .update(query) interface', async () => {
@@ -70,7 +70,7 @@ describe('entity/TableConnector', () => {
 
       expect(resp).toBe(fakeResponse);
       expect(conn.call).toHaveBeenCalledTimes(1);
-      expect(conn.call).toHaveBeenCalledWith('patch', dbPath + query.serialize(), fakeData);
+      expect(conn.call).toHaveBeenCalledWith('put', dbPath + query.serialize(), fakeData);
     });
   });
 
