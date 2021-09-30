@@ -3,6 +3,10 @@ This is a nodejs' client to use _p_**Rest** api.
 
 [![Actions Status](https://github.com/prest/prest-node/workflows/Test,%20Build%20and%20Deploy/badge.svg)](https://github.com/prest/prest-node/actions) [![Coverage Status](https://coveralls.io/repos/github/prest/prest-node/badge.svg?branch=master)](https://coveralls.io/github/prest/prest-node?branch=master)
 
+## Issues
+
+> The [issue listing](https://github.com/prest/prest/issues?q=is%3Aissue+is%3Aopen+label%3Aclient%2Fnode) should be kept in the ["main" repository (_api server_)](https://github.com/prest/prest), centralizing all demands helps us give visibility to all products
+
 
 ## Resume
 - Introduction
